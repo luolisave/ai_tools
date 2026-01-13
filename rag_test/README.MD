@@ -9,7 +9,14 @@ pip install --upgrade transformers accelerate
 pip install soxr
 ~~~
 
-## Run
+## Run DEMO 1
 ~~~
 py -3.11 .\rag.py
+~~~
+
+## Run DEMO 2
+This DEMO generate vectorstore and load vectorstore in seperate py files
+~~~
+py -3.11 .\c1_generate_vectorstore_file.py
+py -3.11 .\c2_use_vectorstore_file.py
 ~~~
