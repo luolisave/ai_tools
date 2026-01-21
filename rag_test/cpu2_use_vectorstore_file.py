@@ -23,15 +23,15 @@ retriever = vectorstore.as_retriever()
 # 3. LLM (instruction-tuned)
 pipe = pipeline(
     "text2text-generation",
-    model="google/flan-t5-base",
+    model="google/flan-t5-large", # model="google/flan-t5-base"
+    temperature=0.3,
     max_new_tokens=200
 )
 llm = HuggingFacePipeline(pipeline=pipe)
 
 # 4. Prompt
 prompt = PromptTemplate.from_template(
-    """Answer the question using only the context below. 
-    If you don't know the answer, just say that you don't know.
+    """If you don't know the answer, just say that you don't know.
 
 Context:
 {context}
@@ -41,14 +41,10 @@ Question:
 """
 )
 
-# Add this function to format documents
-def format_docs(docs):
-    return "\n".join([doc.page_content for doc in docs])
-
 # 5. RAG chain (LCEL)
 rag_chain = (
     {
-        "context": retriever | format_docs,
+        "context": retriever,
         "question": RunnablePassthrough(),
     }
     | prompt
