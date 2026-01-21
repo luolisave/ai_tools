@@ -14,6 +14,7 @@ print("transformers.__version__", transformers.__version__)
 embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-mpnet-base-v2" # model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
+embeddings._client.max_seq_length = 256
 # Load the saved vectorstore
 vectorstore = FAISS.load_local("vectorstore_db_cpu", embeddings, allow_dangerous_deserialization=True)# (search_kwargs={"k": 5})  will return 5 most relevant documents, default is 4
 # Now you can use it
@@ -23,7 +24,7 @@ retriever = vectorstore.as_retriever()
 pipe = pipeline(
     "text2text-generation",
     model="google/flan-t5-base",
-    max_new_tokens=50
+    max_new_tokens=200
 )
 llm = HuggingFacePipeline(pipeline=pipe)
 
@@ -40,10 +41,14 @@ Question:
 """
 )
 
+# Add this function to format documents
+def format_docs(docs):
+    return "\n".join([doc.page_content for doc in docs])
+
 # 5. RAG chain (LCEL)
 rag_chain = (
     {
-        "context": retriever,
+        "context": retriever | format_docs,
         "question": RunnablePassthrough(),
     }
     | prompt
@@ -57,7 +62,14 @@ while True:
         print("Exiting...")
         break
     elif question:
+        # Print the context documents
+        context_docs = retriever.invoke(question)
+        print("Context retrieved:")
+        for doc in context_docs:
+            print(f"- {doc.page_content}\n")
+        
         result = rag_chain.invoke(question)
+        print("LLM Final Result:")
         print(result)
     else:
         print("No question entered. Try again.")
