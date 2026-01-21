@@ -50,9 +50,13 @@ rag_chain = (
 )
 
 # 6. Run
-question = input("Your question: ").strip()
-if question:
-    result = rag_chain.invoke(question)
-    print(result)
-else:
-    print("No question entered.")
+while True:
+    question = input("Your question (or 'quit' to exit): ").strip()
+    if question.lower() == 'quit':
+        print("Exiting...")
+        break
+    elif question:
+        result = rag_chain.invoke(question)
+        print(result)
+    else:
+        print("No question entered. Try again.")
