@@ -14,16 +14,21 @@ pip install soxr
 py -3.11 .\rag.py
 ~~~
 
-## Run DEMO 2 (CUDA)
-This DEMO generate vectorstore and load vectorstore in seperate py files
-~~~
-py -3.11 .\c1_generate_vectorstore_file.py
-py -3.11 .\c2_use_vectorstore_file.py
-~~~
-
-## Run DEMO 2 (CPU)
+## DEMO 2
+### Run DEMO 2 - 1 (CPU)
 This DEMO generate vectorstore and load vectorstore in seperate py files
 ~~~
 py -3.11 .\cpu1_generate_vectorstore_file.py
 py -3.11 .\cpu2_use_vectorstore_file.py
 ~~~
+Now you can ask a question like: **my google password?**
+And It should reply something like: **gogl1234567890**
+
+### Run DEMO 2 - 1 (CUDA)
+This DEMO generate vectorstore and load vectorstore in seperate py files
+~~~
+py -3.11 .\cuda1_generate_vectorstore_file.py
+py -3.11 .\cuda2_use_vectorstore_file.py
+~~~
+
+
