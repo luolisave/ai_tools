@@ -17,9 +17,9 @@ docs = [
 
 # 2. Embeddings + vector store
 embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+    model_name="sentence-transformers/all-mpnet-base-v2" # model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 vectorstore = FAISS.from_texts(docs, embeddings)
 
 # Save to a directory
-vectorstore.save_local("vectorstore_db")
+vectorstore.save_local("vectorstore_db_cpu")

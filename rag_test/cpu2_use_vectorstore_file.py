@@ -12,10 +12,10 @@ print("transformers.__version__", transformers.__version__)
 
 # 2. Embeddings + vector store
 embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+    model_name="sentence-transformers/all-mpnet-base-v2" # model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 # Load the saved vectorstore
-vectorstore = FAISS.load_local("vectorstore_db", embeddings, allow_dangerous_deserialization=True)# (search_kwargs={"k": 5})  will return 5 most relevant documents, default is 4
+vectorstore = FAISS.load_local("vectorstore_db_cpu", embeddings, allow_dangerous_deserialization=True)# (search_kwargs={"k": 5})  will return 5 most relevant documents, default is 4
 # Now you can use it
 retriever = vectorstore.as_retriever()
 
@@ -29,7 +29,8 @@ llm = HuggingFacePipeline(pipeline=pipe)
 
 # 4. Prompt
 prompt = PromptTemplate.from_template(
-    """Answer the question using only the context below.
+    """Answer the question using only the context below. 
+    If you don't know the answer, just say that you don't know.
 
 Context:
 {context}
@@ -52,7 +53,7 @@ rag_chain = (
 # 6. Run
 while True:
     question = input("Your question (or 'quit' to exit): ").strip()
-    if question.lower() == 'quit':
+    if question.lower() == 'quit' or question.lower() == 'exit':
         print("Exiting...")
         break
     elif question:
