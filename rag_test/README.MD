@@ -32,3 +32,13 @@ py -3.11 .\cuda2_use_vectorstore_file.py
 ~~~
 
 
+## Notes
+### Embedding models
+model_name="sentence-transformers/all-mpnet-base-v2"  
+vector 384
+suggested max length: 256 tokens
+
+model_name="sentence-transformers/all-MiniLM-L6-v2"
+vector 768
+suggested max length: 384 ～ 512 tokens
+
