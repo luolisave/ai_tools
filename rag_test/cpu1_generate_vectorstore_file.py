@@ -12,6 +12,7 @@ docs = [
     "Sick leave requires a doctor's note.",
     "google account is goglepass1234567890",
     "facebook account is facepassdsfdsafsa",
+    "foodbank account is foodbankpassfood123",
     "bank account is bank778bankpass8414"
 ]
 
