@@ -1,0 +1,9 @@
+[project]
+name = "my-txt-to-mp3-project"
+version = "0.1.0"
+description = "txt to mp3 batch"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    
+]
