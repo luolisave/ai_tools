@@ -9,4 +9,5 @@ dependencies = [
     "torchaudio",
     "omegaconf",
     "pydub==0.25.1",
+    "edge-tts"
 ]
