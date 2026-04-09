@@ -5,5 +5,8 @@ description = "txt to mp3 batch"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    
+    "torch",
+    "torchaudio",
+    "omegaconf",
+    "pydub==0.25.1",
 ]
