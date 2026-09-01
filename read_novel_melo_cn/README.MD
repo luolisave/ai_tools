@@ -38,19 +38,3 @@ py -3.11 .\split_novel.py
 py -3.11 .\tts4.p
 ~~~
 
-## Files
-### test.py
-test if pytorch etc are installed correctly
-
-### tts3.py
-* Use stanza to parse text to smaller 'sentenses', then feed to meloTTS. Give better results.
-* Use melo to convert text to speech （fregment_number.wav)
-* Use pydub to concate wav files to a single wav file, then convert to mp3
-
-
-### tts4.py
-a copy of tts3.py
-
-### tts5.py
-a copy of tts4.py
-
