@@ -5,6 +5,16 @@ import tempfile
 import os
 import shutil
 import re
+import nltk
+
+
+# 下载必要的 NLTK 数据, 避免中文中有英文时出现错误
+for res in ["averaged_perceptron_tagger_eng", "cmudict"]:
+    try:
+        nltk.data.find(f"taggers/{res}")
+    except LookupError:
+        nltk.download(res)
+
 
 # 初始化 TTS
 tts = TTS(language="ZH", device="cuda")  # GPU 可用改成 "cuda"
