@@ -1,4 +1,6 @@
 # TTS test project
+The goal of this project is use TTS to convert txt to novels (mp3).
+
 ## Install dependency
 
 Need to install cu128+ for RTX 50xx GPU
@@ -23,10 +25,6 @@ pip install pydub
 * melo : text to speech
 * pydub: concat wav files to a single one
 
-~~~
-py -3.11 -c "import nltk; nltk.download('averaged_perceptron_tagger_eng')"
-py -3.11 -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger_eng'); nltk.download('cmudict')"
-~~~
 
 ## Run
 ### split novel.txt files by chapter (第???章), save each chapter into ./novel folder as individual txt file
