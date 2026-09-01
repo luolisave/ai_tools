@@ -60,11 +60,15 @@ for file_name in sorted(os.listdir(input_dir)):
 
         for i, sentence in enumerate(sentences):
             tmp_path = os.path.join(tmp_dir, f"seg_{i}.wav")
-            tts.tts_to_file(
-                text=sentence,
-                speaker_id=1,
-                output_path=tmp_path
-            )
+            try:
+                tts.tts_to_file(
+                    text=sentence,
+                    speaker_id=1,
+                    output_path=tmp_path
+                )
+            except Exception as e:
+                print(f"[跳过] 无法合成的句子: {sentence!r}\n原因: {e}")
+                continue
             audio_segments.append(AudioSegment.from_wav(tmp_path))
 
         # 合并音频，中间可加 500ms 停顿
