@@ -198,6 +198,11 @@ week2/**/prices.db
 week4/main.cpp
 week4/main
 week4/main.exe
+
+# read_novel_melo_cn generated files
+read_novel_melo_cn/novel.txt
+read_novel_melo_cn/novel/
+read_novel_melo_cn/novel_mp3/
 week4/main.rs
 
 week5/preprocessed_db/

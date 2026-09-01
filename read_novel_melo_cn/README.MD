@@ -23,16 +23,21 @@ pip install pydub
 * melo : text to speech
 * pydub: concat wav files to a single one
 
+~~~
+py -3.11 -c "import nltk; nltk.download('averaged_perceptron_tagger_eng')"
+py -3.11 -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger_eng'); nltk.download('cmudict')"
+~~~
+
 ## Run
 ### split novel.txt files by chapter (第???章), save each chapter into ./novel folder as individual txt file
 ~~~
-python .\split_novel.py
+py -3.11 .\split_novel.py
 ~~~
 ###
 
 ### generate 
 ~~~
-python .\tts4.py
+py -3.11 .\tts4.p
 ~~~
 
 ## Files
